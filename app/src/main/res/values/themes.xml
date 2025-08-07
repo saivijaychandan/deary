@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme inheriting from MaterialComponents -->
+    <style name="Theme.DearyNoteTaking" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
+
+    <!-- Splash screen theme should also inherit from MaterialComponents -->
+    <style name="SplashScreenTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:background">@color/primary</item>
+    </style>
+
+    <!-- ImageTopRound should not inherit from a full theme, but from style or shapeAppearance instead -->
+    <!-- To define rounded corners for ShapeableImageView, define a style for shapeAppearance -->
+    <style name="ImageTopRound" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeTopRight">20dp</item>
+        <item name="cornerSizeBottomLeft">20dp</item>
+        <item name="cornerSizeBottomRight">20dp</item>
+    </style>
+</resources>

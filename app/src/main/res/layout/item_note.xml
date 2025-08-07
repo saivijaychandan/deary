@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="170dp"
+    android:layout_height="200dp"
+    android:layout_margin="14dp">
+
+    <!-- Card Content -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="#FFFFFFFF"
+        app:cardCornerRadius="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="14dp"
+            android:paddingBottom="18dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:background="@android:color/white">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/image_note"
+                android:layout_width="138dp"
+                android:layout_height="90dp"
+                android:background="@drawable/sample_image"
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/ImageTopRound" />
+
+            <TextView
+                android:id="@+id/text_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5/7/25"
+                android:textColor="#6B4E38"
+                android:textSize="14sp"
+                android:fontFamily="@font/la_belle_aurore"
+                android:layout_marginTop="3dp" />
+
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/la_belle_aurore"
+                android:text="Sample Title"
+                android:textColor="#6B4E38"
+                android:textSize="19sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Floating Delete Button (initially hidden) -->
+    <ImageView
+        android:id="@+id/imageViewDelete"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_gravity="top|end"
+        android:layout_margin="8dp"
+        android:src="@drawable/baseline_delete_outline_24"
+    android:visibility="gone"
+    android:background="?attr/selectableItemBackgroundBorderless"
+    android:contentDescription="Delete"
+    app:tint="@color/holo_red_dark"/>
+</FrameLayout>

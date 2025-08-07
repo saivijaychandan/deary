@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DearyNoteTaking</string>
+    <string name="main_title">Deary</string>
+    <string name="title_text">Title</string>
+    <string name="date_text">Date</string>
+    <string name="content_text">Content</string>
+</resources>
