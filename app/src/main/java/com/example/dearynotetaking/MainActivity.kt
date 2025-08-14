@@ -33,21 +33,11 @@ class MainActivity : ComponentActivity() {
 //        val dateArr = arrayOf("13/11/24","2/1/25","3/2/25","7/4/25","15/5/25","23/7/25","13/11/24","2/1/25","3/2/25","7/4/25","15/5/25","23/7/25")
 //        val itemCount = minOf(titleArr.size, imageArr.size, dateArr.size)
         notes = displayData().toMutableList()
-        adapter = NotesAdapter(this, notes)
+        adapter = NotesAdapter(this, notes){
+            clickedNote -> Toast.makeText(this,"You clicked on ${clickedNote.title}",Toast.LENGTH_SHORT).show()
+        }
         binding.gridView.adapter = adapter
-        binding.gridView.setOnItemClickListener { parent, view, position, id ->
-            val clickedNote = notes[position]
-            Toast.makeText(
-                this,
-                "You Clicked on ${clickedNote.title}",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-        binding.gridView.setOnItemLongClickListener{ parent, view, position, id ->
-            notes[position].showDelete = !notes[position].showDelete
-            adapter.notifyDataSetChanged()
-            true
-        }
+
 
         //Fetching Current Date for the Title in Main Page
         val calendar = Calendar.getInstance()
@@ -88,6 +78,7 @@ class MainActivity : ComponentActivity() {
         cursor.close()
         return notesList
     }
+
     override fun onResume() {
         super.onResume()
         notes.clear()

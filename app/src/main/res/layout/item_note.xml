@@ -4,7 +4,16 @@
     android:layout_width="170dp"
     android:layout_height="200dp"
     android:layout_margin="14dp">
-
+    <ImageView
+        android:id="@+id/imageViewDelete"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_gravity="top|end"
+        android:layout_margin="8dp"
+        android:src="@drawable/delete_button"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Delete"
+        android:visibility="gone"/>
     <!-- Card Content -->
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -55,16 +64,6 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Floating Delete Button (initially hidden) -->
-    <ImageView
-        android:id="@+id/imageViewDelete"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_gravity="top|end"
-        android:layout_margin="8dp"
-        android:src="@drawable/baseline_delete_outline_24"
-    android:visibility="gone"
-    android:background="?attr/selectableItemBackgroundBorderless"
-    android:contentDescription="Delete"
-    app:tint="@color/holo_red_dark"/>
+
+
 </FrameLayout>
