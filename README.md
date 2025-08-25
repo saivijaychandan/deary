@@ -2,6 +2,8 @@
 
 **Deary** is a simple and elegant Android application that works like a personal digital diary. It allows users to capture their daily memories with a date, title, description, and an optional photo. All entries are stored locally on the device for privacy and can be easily viewed, updated, or deleted.
 
+***
+
 ## ✨ Features
 
 * **Create Entries**: Make new diary entries with a title, description, and an optional photo of the day.
@@ -16,33 +18,45 @@
 
 ### Home Screen
 This is the main screen of the app, displaying all your diary entries. The date at the top shows the current day.
-![Home Screen](./images/homescreen1.png)
-![Home Screen](./images/homescreen2.png)
+<div align="center">
+  <img src="./images/homescreen1.png" alt="Home Screen 1" width="300" style="margin-right: 10px;"/>
+  <img src="./images/homescreen2.png" alt="Home Screen 2" width="300"/>
+</div>
 
 ### View Each Entry
-This screen shows you the diary entry for a particular day
-![View Screen](./images/display1.png)
-![View Screen](./images/display2.png)
+This screen shows you the diary entry for a particular day.
+<div align="center">
+  <img src="./images/display1.png" alt="View Screen 1" width="300" style="margin-right: 10px;"/>
+  <img src="./images/display2.png" alt="View Screen 2" width="300"/>
+</div>
 
 ### Adding a New Entry
 This screen allows you to create a new diary entry. You can add a title, description, and a photo from your camera or gallery.
-![Add Screen](./images/entry1.png)
-![Add Screen](./images/entry2.png)
-![Add Screen](./images/entry3.png)
+<div align="center">
+  <img src="./images/entry1.png" alt="Add Screen 1" width="300" style="margin-right: 10px;"/>
+  <img src="./images/entry2.png" alt="Add Screen 2" width="300" style="margin-right: 10px;"/>
+  <img src="./images/entry3.png" alt="Add Screen 3" width="300"/>
+</div>
 
 ### Search Functionality
 You can search for notes by title, description, or date from a dedicated search screen.
-![Search Screen](./images/search1.png)
-![Search Screen](./images/search2.png)
+<div align="center">
+  <img src="./images/search1.png" alt="Search Screen 1" width="300" style="margin-right: 10px;"/>
+  <img src="./images/search2.png" alt="Search Screen 2" width="300"/>
+</div>
 
 ### Long-Press to Delete
 Long-pressing an entry on the home screen activates a delete mode, allowing you to easily remove notes.
-![Delete Screen](./images/delete1.png)
-![Delete Screen](./images/delete2.png)
+<div align="center">
+  <img src="./images/delete1.png" alt="Delete Screen 1" width="300" style="margin-right: 10px;"/>
+  <img src="./images/delete2.png" alt="Delete Screen 2" width="300"/>
+</div>
 
 ### Update Entry
-Going into the entry and clicking on the pencil icon lets you update the entry
-![Update Screen](./images/update.png)
+Going into the entry and clicking on the pencil icon lets you update the entry.
+<div align="center">
+  <img src="./images/update.png" alt="Update Screen" width="300"/>
+</div>
 
 ***
 
@@ -64,27 +78,6 @@ To get a local copy of the project up and running, follow these simple steps.
 * A physical Android device or emulator running Android 6.0 (Marshmallow) or higher.
 
 ### Installation
-1.  Clone the repository:
-    ```bash
-    git clone [https://github.com/your-username/Deary.git](https://github.com/your-username/Deary.git)
-    ```
-2.  Open the project in Android Studio.
-3.  Build and run the app on your device or emulator.
-
-***
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/your-username/Deary/issues).
-
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
-
-***
-
-## 📄 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/your-username/Deary.git](https://github.com/your-username/Deary.git)
