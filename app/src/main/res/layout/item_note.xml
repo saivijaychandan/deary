@@ -1,27 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="170dp"
     android:layout_height="200dp"
     android:layout_margin="14dp">
-
-    <ImageView
-        android:id="@+id/imageViewDelete"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_gravity="top|end"
-        android:layout_margin="8dp"
-        android:src="@drawable/delete_button"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Delete"
-        android:visibility="gone"/>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:backgroundTint="#FFFFFFFF"
-        app:cardCornerRadius="20dp">
+        app:cardCornerRadius="20dp"
+        android:longClickable="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,7 +26,8 @@
             android:paddingBottom="18dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:background="@android:color/white">
+            android:background="@android:color/white"
+            android:longClickable="false">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/image_note"
@@ -65,4 +61,18 @@
                 android:layout_height="5dp" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
-</FrameLayout>
+
+    <ImageView
+        android:id="@+id/imageViewDeleteX"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/delete_button"
+        android:contentDescription="Delete"
+        android:elevation="2dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

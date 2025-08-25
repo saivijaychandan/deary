@@ -8,6 +8,6 @@ class ViewHolder(view: View) {
     val imageView: ImageView = view.findViewById(R.id.image_note)
     val dateTextView: TextView = view.findViewById(R.id.text_date)
     val titleTextView: TextView = view.findViewById(R.id.text_title)
-    val deleteButton: ImageView = view.findViewById(R.id.imageViewDelete)
+    val deleteView: ImageView = view.findViewById(R.id.imageViewDeleteX)
     // val descriptionTextView: TextView = view.findViewById(R.id.text_description)
 }

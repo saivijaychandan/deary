@@ -1,7 +1,6 @@
 package com.example.dearynotetaking
 
 import android.content.Context
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,20 +10,27 @@ import android.widget.TextView
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.imageview.ShapeableImageView
 import java.io.File
+import android.net.Uri
 
 class NotesAdapter(
     private val context: Context,
     private val notes: MutableList<Note>,
-    private val onItemClick: (Note) -> Unit
+    private val onItemClick: (Note) -> Unit,
+    private val onLongPress: () -> Unit,
+    private val onDeleteClick: (Note) -> Unit
 ) : BaseAdapter() {
 
     private var inflater: LayoutInflater? = null
     private var deleteMode = false
-    private val dbHelper: DatabaseHelper = DatabaseHelper(context)
 
     override fun getCount(): Int = notes.size
     override fun getItem(position: Int): Note = notes[position]
     override fun getItemId(position: Int): Long = position.toLong()
+
+    fun setDeleteMode(enabled: Boolean) {
+        deleteMode = enabled
+        notifyDataSetChanged()
+    }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view: View
@@ -43,9 +49,25 @@ class NotesAdapter(
             holder = view.tag as ViewHolder
         }
 
-        val note = notes[position]
+        val note = notes.get(position)
 
-        // Use the new ViewHolder fields correctly
+        holder.cardView.setOnClickListener {
+            onItemClick(note)
+        }
+
+        holder.cardView.setOnLongClickListener {
+            onLongPress()
+            true
+        }
+
+        // Set visibility of the delete X
+        holder.deleteButton.visibility = if (deleteMode) View.VISIBLE else View.GONE
+
+        // Set click listener for the delete X
+        holder.deleteButton.setOnClickListener {
+            onDeleteClick(note)
+        }
+
         holder.titleTextView.text = note.title
         holder.dateTextView.text = note.date
 
@@ -60,27 +82,6 @@ class NotesAdapter(
             holder.imageView.setImageResource(R.drawable.sample_image)
         }
 
-        // Click listeners
-        holder.cardView.setOnClickListener {
-            if (!deleteMode) {
-                onItemClick(note)
-            }
-        }
-
-        holder.cardView.setOnLongClickListener {
-            deleteMode = !deleteMode
-            notifyDataSetChanged()
-            true
-        }
-
-        holder.deleteButton.visibility = if (deleteMode) View.VISIBLE else View.GONE
-        holder.deleteButton.setOnClickListener {
-            dbHelper.deleteData(note.id.toString())
-            notes.removeAt(position)
-            deleteMode = false // Exit delete mode after a successful deletion
-            notifyDataSetChanged()
-        }
-
         return view
     }
 
@@ -88,12 +89,9 @@ class NotesAdapter(
         val imageView: ShapeableImageView = view.findViewById(R.id.image_note)
         val titleTextView: TextView = view.findViewById(R.id.text_title)
         val dateTextView: TextView = view.findViewById(R.id.text_date)
-        val deleteButton: ImageView = view.findViewById(R.id.imageViewDelete)
+        val deleteButton: ImageView = view.findViewById(R.id.imageViewDeleteX) // The old ID
         val cardView: MaterialCardView = view.findViewById(R.id.cardView)
     }
 
-    fun exitDeleteMode() {
-        deleteMode = false
-        notifyDataSetChanged()
-    }
+
 }
