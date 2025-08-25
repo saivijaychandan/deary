@@ -2,9 +2,9 @@ package com.example.dearynotetaking
 
 data class Note(
     val id: Int,
-    val title:String,
     val date:String,
-    val imageResId:Int,
+    val title:String,
     val description:String,
+    val imagePath:String?,
     var showDelete: Boolean = false
 )

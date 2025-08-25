@@ -1,12 +1,16 @@
 package com.example.dearynotetaking
 
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.imageview.ShapeableImageView
+import java.io.File
 
 class NotesAdapter(
     private val context: Context,
@@ -41,37 +45,51 @@ class NotesAdapter(
 
         val note = notes[position]
 
-        // Click opens note if not in delete mode
-        view.setOnClickListener {
+        // Use the new ViewHolder fields correctly
+        holder.titleTextView.text = note.title
+        holder.dateTextView.text = note.date
+
+        if (!note.imagePath.isNullOrEmpty()) {
+            val imageFile = File(note.imagePath)
+            if (imageFile.exists()) {
+                holder.imageView.setImageURI(Uri.fromFile(imageFile))
+            } else {
+                holder.imageView.setImageResource(R.drawable.sample_image)
+            }
+        } else {
+            holder.imageView.setImageResource(R.drawable.sample_image)
+        }
+
+        // Click listeners
+        holder.cardView.setOnClickListener {
             if (!deleteMode) {
                 onItemClick(note)
             }
         }
 
-        // Long press toggles delete mode
-        view.setOnLongClickListener {
+        holder.cardView.setOnLongClickListener {
             deleteMode = !deleteMode
             notifyDataSetChanged()
             true
         }
 
-        // Show/hide delete button based on delete mode
         holder.deleteButton.visibility = if (deleteMode) View.VISIBLE else View.GONE
-
-        // Delete action
         holder.deleteButton.setOnClickListener {
             dbHelper.deleteData(note.id.toString())
             notes.removeAt(position)
-            deleteMode = false
+            deleteMode = false // Exit delete mode after a successful deletion
             notifyDataSetChanged()
         }
 
-        // Bind note data
-        holder.imageView.setImageResource(note.imageResId)
-        holder.titleTextView.text = note.title
-        holder.dateTextView.text = note.date
-
         return view
+    }
+
+    private class ViewHolder(view: View) {
+        val imageView: ShapeableImageView = view.findViewById(R.id.image_note)
+        val titleTextView: TextView = view.findViewById(R.id.text_title)
+        val dateTextView: TextView = view.findViewById(R.id.text_date)
+        val deleteButton: ImageView = view.findViewById(R.id.imageViewDelete)
+        val cardView: MaterialCardView = view.findViewById(R.id.cardView)
     }
 
     fun exitDeleteMode() {

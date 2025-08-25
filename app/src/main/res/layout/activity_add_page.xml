@@ -6,49 +6,122 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddPage"
-    android:background="@color/primary"
-    >
+    android:background="@color/primary">
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/editTextId"
         android:visibility="gone"
-        android:hint="ID" />
-    <Button
-        android:id="@+id/editTextDate"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:textSize="48sp"
+        android:hint="ID"
+        android:autofillHints="postalCode"
+        android:inputType="text"
+        tools:ignore="HardcodedText" />
+
+    <!-- Date row -->
+    <LinearLayout
+        android:id="@+id/dateRow"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/date_text"
-        android:textAllCaps="false"
-        android:fontFamily="@font/la_belle_aurore"
-        android:textAlignment="textStart"
-        android:backgroundTint="@color/primary"
-        android:background="@null"
-        android:layout_marginTop="30dp"
-        style="?android:attr/borderlessButtonStyle"
-        />
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:padding="16dp">
 
+        <Button
+            android:id="@+id/editTextDate"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginTop="30dp"
+            android:background="@null"
+            android:backgroundTint="@color/primary"
+            android:fontFamily="@font/la_belle_aurore"
+            android:text="@string/date_text"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textSize="48sp"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="45dp"
+            android:src="@drawable/baseline_calendar_month_24"
+            android:background="@null"
+            android:contentDescription="Date button"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+    <!-- Image container -->
+    <FrameLayout
+        android:id="@+id/imageContainer"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_image_container"
+        android:clipToOutline="true"
+        app:layout_constraintTop_toBottomOf="@id/dateRow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="UnusedAttribute">
+
+        <!-- Grey placeholder -->
+        <ImageView
+            android:id="@+id/imagePlaceholder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:background="@color/gray"
+            tools:ignore="ContentDescription" />
+
+        <!-- Centered + button -->
+        <ImageButton
+            android:id="@+id/addImageButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:src="@drawable/baseline_add_circle_outline_24"
+            app:tint="@color/white"
+            android:contentDescription="Add Image"
+            android:padding="8dp"
+            tools:ignore="HardcodedText" />
+    </FrameLayout>
+
+
+    <!-- Title -->
     <EditText
         android:id="@+id/editTextTitle"
-        android:layout_width="370dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="339dp"
+        android:layout_height="97dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:fontFamily="@font/la_belle_aurore"
         android:hint="@string/title_text"
         android:inputType="text"
-        android:textColor="@color/slight_gray"
+        android:textColor="@color/black"
+        android:textColorHint="@color/dark_gray"
         android:textSize="48sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+        app:layout_constraintTop_toBottomOf="@+id/imageContainer"
+        tools:ignore="Autofill" />
 
+    <!-- Description -->
     <EditText
         android:id="@+id/editTextDescription"
-        android:layout_width="398dp"
-        android:layout_height="510dp"
+        android:layout_width="401dp"
+        android:layout_height="355dp"
+        android:layout_marginStart="60dp"
         android:ems="10"
         android:fontFamily="@font/la_belle_aurore"
         android:gravity="start|top"
@@ -57,18 +130,25 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTitle"
+        android:textColor="@color/black"
+        android:textColorHint="@color/dark_gray"
 
+        tools:ignore="Autofill" />
+
+    <!-- Save button -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/save_new"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         android:src="@drawable/baseline_save_24"
         app:backgroundTint="@color/accent"
-        android:contentDescription="Save Button" />
+        android:contentDescription="Save Button"
+        tools:ignore="HardcodedText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

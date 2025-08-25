@@ -11,4 +11,6 @@
     <color name="accent">#D98E73</color>
     <color name="slight_gray">#070707</color>
     <color name="holo_red_dark">#ffcc0000</color>
+    <color name="gray">#808080</color>
+    <color name="dark_gray">#525252</color>
 </resources>
