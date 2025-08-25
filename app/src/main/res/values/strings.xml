@@ -4,4 +4,7 @@
     <string name="title_text">Title</string>
     <string name="date_text">Date</string>
     <string name="content_text">Content</string>
+    <string name="date">Date</string>
+    <string name="new_button">New Button</string>
+    <string name="search_button">Search Button</string>
 </resources>
