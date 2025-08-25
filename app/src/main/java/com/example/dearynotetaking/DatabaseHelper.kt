@@ -57,7 +57,9 @@ class DatabaseHelper(context:Context) : SQLiteOpenHelper(context,DATABASE_NAME,n
     fun readData(): List<Note> {
         val db = readableDatabase
         val noteList = mutableListOf<Note>()
-        val cursor = db.rawQuery("SELECT * FROM $TABLE_NAME", null)
+        // Change: Add an ORDER BY clause to sort by date in ascending order
+        val query = "SELECT * FROM $TABLE_NAME ORDER BY $COL_DATE DESC"
+        val cursor = db.rawQuery(query, null)
 
         cursor.use {
             if (it.moveToFirst()) {
@@ -68,7 +70,6 @@ class DatabaseHelper(context:Context) : SQLiteOpenHelper(context,DATABASE_NAME,n
                     val desc = it.getString(it.getColumnIndexOrThrow(COL_DESC))
                     val imagePath = it.getString(it.getColumnIndexOrThrow(COL_IMAGE_PATH))
 
-                    // Correct order of parameters to match the Note data class
                     val note = Note(id, date, title, desc, imagePath)
                     noteList.add(note)
                 } while (it.moveToNext())
@@ -97,13 +98,10 @@ class DatabaseHelper(context:Context) : SQLiteOpenHelper(context,DATABASE_NAME,n
     fun searchNotes(query: String): List<Note> {
         val db = readableDatabase
         val noteList = mutableListOf<Note>()
-
-        // Use the LIKE operator for all columns
         val selection = "$COL_DATE LIKE ? OR $COL_TITLE LIKE ? OR $COL_DESC LIKE ?"
         val likeQuery = "%$query%"
         val selectionArgs = arrayOf(likeQuery, likeQuery, likeQuery)
 
-        // ... rest of the function remains the same
         val cursor = db.query(
             TABLE_NAME,
             null,
@@ -111,10 +109,9 @@ class DatabaseHelper(context:Context) : SQLiteOpenHelper(context,DATABASE_NAME,n
             selectionArgs,
             null,
             null,
-            null
+            "$COL_DATE DESC" // Add ORDER BY clause here as well
         )
 
-        // ... data retrieval loop
         cursor.use {
             if (it.moveToFirst()) {
                 do {
@@ -123,6 +120,7 @@ class DatabaseHelper(context:Context) : SQLiteOpenHelper(context,DATABASE_NAME,n
                     val title = it.getString(it.getColumnIndexOrThrow(COL_TITLE))
                     val desc = it.getString(it.getColumnIndexOrThrow(COL_DESC))
                     val imagePath = it.getString(it.getColumnIndexOrThrow(COL_IMAGE_PATH))
+
                     val note = Note(id, date, title, desc, imagePath)
                     noteList.add(note)
                 } while (it.moveToNext())

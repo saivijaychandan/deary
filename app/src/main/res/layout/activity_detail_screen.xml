@@ -79,8 +79,7 @@
         <TextView
             android:id="@+id/display_desc"
             android:layout_width="342dp"
-            android:layout_height="265dp"
-            android:layout_marginHorizontal="16dp"
+            android:layout_height="wrap_content" android:layout_marginHorizontal="16dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/la_belle_aurore"
             android:text="Description\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ... (long text here)"
