@@ -16,33 +16,33 @@
 
 ### Home Screen
 This is the main screen of the app, displaying all your diary entries. The date at the top shows the current day.
-![Home Screen](./images/homescreen1)
-![Home Screen](./images/homescreen2)
+![Home Screen](./images/homescreen1.png)
+![Home Screen](./images/homescreen2.png)
 
 ### View Each Entry
 This screen shows you the diary entry for a particular day
-![View Screen](./images/display1)
-![View Screen](./images/display2)
+![View Screen](./images/display1.png)
+![View Screen](./images/display2.png)
 
 ### Adding a New Entry
 This screen allows you to create a new diary entry. You can add a title, description, and a photo from your camera or gallery.
-![Add Screen](./images/entry1)
-![Add Screen](./images/entry2)
-![Add Screen](./images/entry3)
+![Add Screen](./images/entry1.png)
+![Add Screen](./images/entry2.png)
+![Add Screen](./images/entry3.png)
 
 ### Search Functionality
 You can search for notes by title, description, or date from a dedicated search screen.
-![Search Screen](./images/search1)
-![Search Screen](./images/search2)
+![Search Screen](./images/search1.png)
+![Search Screen](./images/search2.png)
 
 ### Long-Press to Delete
 Long-pressing an entry on the home screen activates a delete mode, allowing you to easily remove notes.
-![Delete Screen](./images/delete1)
-![Delete Screen](./images/delete2)
+![Delete Screen](./images/delete1.png)
+![Delete Screen](./images/delete2.png)
 
 ### Update Entry
 Going into the entry and clicking on the pencil icon lets you update the entry
-![Update Screen](./images/update)
+![Update Screen](./images/update.png)
 
 ***
 
