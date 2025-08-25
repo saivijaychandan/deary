@@ -55,7 +55,7 @@ Long-pressing an entry on the home screen activates a delete mode, allowing you 
 ### Update Entry
 Going into the entry and clicking on the pencil icon lets you update the entry.
 <div align="center">
-  <img src="./images/update.png" alt="Update Screen" width="300"/>
+  <img src="./images/update1.png" alt="Update Screen" width="300"/>
 </div>
 
 ***
