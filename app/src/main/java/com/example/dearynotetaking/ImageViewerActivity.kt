@@ -1,7 +1,6 @@
 package com.example.dearynotetaking
 
 import android.graphics.BitmapFactory
-import android.net.Uri
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity

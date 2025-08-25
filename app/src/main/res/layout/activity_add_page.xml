@@ -43,14 +43,14 @@
             android:text="@string/date_text"
             android:textAlignment="textStart"
             android:textAllCaps="false"
-            android:textSize="48sp"
+            android:textSize="40sp"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:layout_width="69dp"
-            android:layout_height="69dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="45dp"
             android:src="@drawable/baseline_calendar_month_24"

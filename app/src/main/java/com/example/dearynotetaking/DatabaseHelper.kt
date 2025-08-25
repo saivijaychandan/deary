@@ -2,7 +2,6 @@ package com.example.dearynotetaking
 
 import android.content.ContentValues
 import android.content.Context
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
@@ -60,7 +59,7 @@ class DatabaseHelper(context:Context) : SQLiteOpenHelper(context,DATABASE_NAME,n
         val noteList = mutableListOf<Note>()
         val cursor = db.rawQuery("SELECT * FROM $TABLE_NAME", null)
 
-        cursor.use { // Use 'use' for autoclosable
+        cursor.use {
             if (it.moveToFirst()) {
                 do {
                     val id = it.getInt(it.getColumnIndexOrThrow(COL_ID))
@@ -92,5 +91,43 @@ class DatabaseHelper(context:Context) : SQLiteOpenHelper(context,DATABASE_NAME,n
     fun deleteData(id: String): Int{
         val db=writableDatabase
         return db.delete(TABLE_NAME,"$COL_ID=?",arrayOf(id))
+    }
+
+    // In DatabaseHelper.kt
+    fun searchNotes(query: String): List<Note> {
+        val db = readableDatabase
+        val noteList = mutableListOf<Note>()
+
+        // Use the LIKE operator for all columns
+        val selection = "$COL_DATE LIKE ? OR $COL_TITLE LIKE ? OR $COL_DESC LIKE ?"
+        val likeQuery = "%$query%"
+        val selectionArgs = arrayOf(likeQuery, likeQuery, likeQuery)
+
+        // ... rest of the function remains the same
+        val cursor = db.query(
+            TABLE_NAME,
+            null,
+            selection,
+            selectionArgs,
+            null,
+            null,
+            null
+        )
+
+        // ... data retrieval loop
+        cursor.use {
+            if (it.moveToFirst()) {
+                do {
+                    val id = it.getInt(it.getColumnIndexOrThrow(COL_ID))
+                    val date = it.getString(it.getColumnIndexOrThrow(COL_DATE))
+                    val title = it.getString(it.getColumnIndexOrThrow(COL_TITLE))
+                    val desc = it.getString(it.getColumnIndexOrThrow(COL_DESC))
+                    val imagePath = it.getString(it.getColumnIndexOrThrow(COL_IMAGE_PATH))
+                    val note = Note(id, date, title, desc, imagePath)
+                    noteList.add(note)
+                } while (it.moveToNext())
+            }
+        }
+        return noteList
     }
 }

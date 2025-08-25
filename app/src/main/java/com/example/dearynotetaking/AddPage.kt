@@ -2,14 +2,11 @@ package com.example.dearynotetaking
 import android.Manifest
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AlertDialog
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
-import android.provider.MediaStore
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -124,11 +121,14 @@ class AddPage : AppCompatActivity() {
         val datepicker = DatePickerDialog(
             this,
             { _, selectedYear, selectedMonth, dayOfMonth ->
-                editTextDate.text = "$dayOfMonth/${selectedMonth + 1}/$selectedYear"
+                // Fix: Explicitly specify Locale.ROOT to avoid locale-related bugs
+                val formattedDate = String.format(Locale.ROOT, "%02d/%02d/%04d", dayOfMonth, selectedMonth + 1, selectedYear)
+                editTextDate.text = formattedDate
             }, year, month, day
         )
         datepicker.show()
     }
+
 
     private fun saveNote() {
         val title = editTextTitle.text.toString().trim()
@@ -140,15 +140,17 @@ class AddPage : AppCompatActivity() {
             return
         }
 
-        var imagePathToSave: String? = currentPhotoPath
-        if (selectedImageUri != null) {
-            // Check if the URI is a content URI (from gallery) and needs to be copied
+        val imagePathToSave: String? = if (selectedImageUri != null) {
             if (selectedImageUri.toString().startsWith("content://")) {
-                imagePathToSave = saveImageToAppSpecificStorage(selectedImageUri!!)
+                // If from the gallery, save the image and get the new path
+                saveImageToAppSpecificStorage(selectedImageUri!!)
             } else {
-                // If it's a file URI (from camera), the path is already set in currentPhotoPath
-                imagePathToSave = currentPhotoPath
+                // If from the camera, use the existing path
+                currentPhotoPath
             }
+        } else {
+            // If no image was selected, the path is null
+            null
         }
 
         if (isEdit) {

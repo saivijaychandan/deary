@@ -8,7 +8,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.imageview.ShapeableImageView
 import android.widget.ImageButton
-import androidx.core.net.toUri
 
 class DetailScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

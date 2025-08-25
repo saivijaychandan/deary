@@ -49,7 +49,7 @@ class NotesAdapter(
             holder = view.tag as ViewHolder
         }
 
-        val note = notes.get(position)
+        val note = notes[position]
 
         holder.cardView.setOnClickListener {
             onItemClick(note)
