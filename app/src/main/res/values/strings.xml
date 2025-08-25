@@ -7,4 +7,7 @@
     <string name="date">Date</string>
     <string name="new_button">New Button</string>
     <string name="search_button">Search Button</string>
+    <string name="sample_string">5/7/25</string>
+    <string name="sample_title">Sample Title</string>
+    <string name="delete">Delete</string>
 </resources>
